@@ -141,8 +141,3 @@ Python, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, LightGBM, XGBoost, Jup
 
 ---
 
-## What I'd do next
-
-- Try a proper holiday calendar instead of inferring holidays from daily usage.
-- Rebuild the model without the whole-day features, so it could work in real time.
-- Test on more than one year of data.
