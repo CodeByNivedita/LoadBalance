@@ -1,7 +1,6 @@
-# Predicting Load Type from Power Consumption Data
+# Predicting LoadType from Power Consumption Data
 
 I built this project to predict whether a factory's electricity load at any given moment is **Light**, **Medium** or **Maximum**, using 15-minute readings from 2018.
-
 Everything lives in one Jupyter notebook, from loading the raw CSV to comparing models. This README explains what I did, what I found, and where I'm still unsure.
 
 ---
@@ -19,12 +18,9 @@ The dataset (`load_data.csv`) has **35,041 rows**, one every 15 minutes for the 
 The classes are imbalanced, so I didn't trust accuracy on its own. I mostly looked at **macro F1**, which treats all three classes equally.
 
 ---
-
 ## How I approached it
-
 ### 1. Looking at the data first
 Before touching any model I plotted things. A few things stood out:
-
 - Between midnight and 8 AM, the load is almost always Light.
 - Sundays are mostly Light, Saturdays partly.
 - Usage_kWh separates Light from the others well, but Medium and Maximum overlap a lot, so usage alone isn't enough.
@@ -37,7 +33,6 @@ Before touching any model I plotted things. A few things stood out:
 
 ### 3. Splitting by time, not randomly
 This is time-ordered data, so a random split would let the model peek at the future. I trained on **January to November (32,064 rows)** and tested on **December (2,977 rows)**.
-
 ### 4. Features I added
 - `hour`, `minute`, `dayofweek`, `is_weekend`, `is_sunday`
 - `total_reactive` and `usage_per_co2` (simple power ratios)
